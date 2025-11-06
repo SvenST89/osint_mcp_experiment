@@ -43,7 +43,7 @@ async def rest_query_region(request: Request):
     safe_result = sanitize_obj(result.model_dump())  # fully JSON-serializable
     return JSONResponse(safe_result, status_code=200)
 
-rest_app = Starlette(routes=[Route("/query_region", rest_query_region, methods=["GET", "POST"])])
+rest_app = Starlette(routes=[Route("/query_region", rest_query_region, methods=["POST"])])
 
 # Run both MCP and REST servers concurrently
 async def main():
@@ -73,7 +73,7 @@ OSM data may contain invalid coordinates (`NaN`, `Infinity`) or extremely large 
 Tags and other numeric fields may contain `NaN`, `Inf`, or NumPy numeric types (`numpy.float64`, `numpy.int64`) which are not JSON-compliant. All numbers should be **converted to native Python types**, with invalid values replaced by `None`.
 
 ### NumPy Scalars Are Problematic
-Even finite NumPy floats or integers cannot be serialized directly by `json.dumps()`. Conversion to Python `float` or `int` is required.
+Even finite NumPy floats or integers cannot be serialized directly by `json.dumps()`, which is used internally in `JSONResponse()` or `shapely.to_geojson()` (was used initially in the code for feature creation). Conversion to Python `float` or `int` is required.
 
 ### MCP Context Handling
 When called via REST, `ctx: Context` may be `None`. Logging or other context-dependent operations should be guarded or use a dummy context to avoid *runtime errors*.
