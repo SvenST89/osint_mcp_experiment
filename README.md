@@ -59,7 +59,7 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-## Lessons Learned
+## Lessons Learned (so far...)
 
 ### JSON Serialization and Shapely Geometries
 
@@ -83,3 +83,12 @@ Using a **recursive sanitization function ensures that geometries, tags, and all
 
 ### Concurrent Server Setup
 Running MCP and REST servers concurrently in the same Python process is feasible using `asyncio.create_task` and `asyncio.gather`, enabling both agent workflows and HTTP testing simultaneously.
+
+## Open Issues (upcoming...)
+
+- [ ] OpenAI + Anthropic API chat endpoint setup
+- [ ] Overpass Tool connection to OpenAI LLM
+- [ ] Further Abstraction / Base Classes for LLM
+- [ ] Further Abstraction / Base Classes MCP + Tool Usage
+- [ ] Unit Tests
+- [ ] MVP frontend with Dash/plotly + map for demonstration purposes
