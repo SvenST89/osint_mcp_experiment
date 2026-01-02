@@ -86,9 +86,28 @@ Running MCP and REST servers concurrently in the same Python process is feasible
 
 ## Open Issues (upcoming...)
 
+### 1. Data Retrieval & Processing
+- [ ] Filter in OverpassQuery for required columns using parameters
+- [ ] Vectorize the iteration step when building OverpassFeature
+- [ ] Adapt pydantic fields for the vectorized approach
+- [ ] Implement dictionary unpacking as alternative for building OverpassFeature
+- [ ] Define hard-typed Enum types for fields used in filtering step from OverpassFeature geo dataframe
+- [ ] Further Abstraction / Base Classes MCP + Tool Usage
+
+### 2. Testing Infrastructure
+- [ ] Set up internal Python code testing suite for code execution testing
+- [ ] Implement check-loop that tests generated code in test suite before execution
+- [ ] Unit Tests
+
+### 3. LLM Chain Implementation
 - [ ] OpenAI + Anthropic API chat endpoint setup
 - [ ] Overpass Tool connection to OpenAI LLM
 - [ ] Further Abstraction / Base Classes for LLM
-- [ ] Further Abstraction / Base Classes MCP + Tool Usage
-- [ ] Unit Tests
-- [ ] MVP frontend with Dash/plotly + map for demonstration purposes
+- [ ] Set up LLM chain using OverpassFeature tool to generate geo dataframe
+- [ ] Create prompt templates for tool execution (generates geo dataframe) + analysis step (analyzes geo dataframe, if requested by user) + visualization plotly graph generation
+- [ ] If analysis is requested: let LLM generate analysis dataframe using groupby/count on deduced columns
+- [ ] Let LLM write code for appropriate chart generation (e.g., pie chart)
+
+### 4. Frontend Development
+- [ ] Build frontend with Dash/Plotly
+- [ ] Display resulting charts or analysis tables in frontend
