@@ -61,13 +61,13 @@ class OverpassStructuredTool:
                 # according to: /workspaces/mcplanggraph/data/input/osm_input.py
                 # there should be only valid geometries in the received GeoDataFrame.
                 # Directly convert shapely geometry to a dict.
-                geojson_dict = mapping(row.geometry) if row.geometry else None
+                geojson_geom = mapping(row.geometry) if row.geometry else None
                 #print(f"Geometry for feature ID {row['id']}: {geojson_dict}")
                 feat = OverpassFeature(
                     id=int(row["id"]),
                     type=row.get("amenity") or "feature",
                     tags={k: v for k, v in row.items() if k not in ["id", "geometry"]},
-                    geometry=geojson_dict
+                    geometry=geojson_geom
                 )
                 features.append(feat)
             return OverpassQueryResult(

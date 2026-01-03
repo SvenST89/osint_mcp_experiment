@@ -9,3 +9,4 @@ assets/*
 .devcontainer*
 
 poetry.lock
+*.env

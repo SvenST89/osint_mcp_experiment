@@ -8,51 +8,61 @@ package-mode = false
 [tool.poetry.dependencies]
 python = "^3.11"
 
-langchain = "*"
+# LangChain / LLM
 langgraph = "*"
-langchain-community = "*"
-langchain-experimental = "*"
+langgraph-checkpoint-postgres = "*"
 langchain-mcp-adapters = "*"
 langchain-google-genai = "*"
 langchain-openai = "*"
-langgraph-checkpoint-postgres = "*"
-llama-cpp-python = "*"
 google-genai = "*"
-h3 = "*"
-chromadb = "*"
+llama-cpp-python = "*"
+
+# Google / APIs
+google-api-python-client = "*"
+
+# Vector / ML
 faiss-cpu = "*"
-transformers = "*"
+chromadb = "*"
 sentence-transformers = "*"
+transformers = "*"
 accelerate = "*"
-plotly = "*"
-dash = "*"
-dash-bootstrap-components = "*"
-dash-trich-components = "*"
-python-dotenv = "*"
-llama-index = "*"
-openai = "*"
-jupyter = "*"
-spacy = "*"
-mcp = "*"
-shapely = "*"
-geopandas = "*"
-scann = "*"
 scikit-learn = "*"
 scipy = "*"
 nltk = "*"
+ragas = "*"
+
+# Geospatial
+h3 = "*"
+shapely = "*"
+geopandas = "*"
+scann = "*"
+
+# Vision / Docs
 opencv-python = "*"
 pdfplumber = "*"
 pytesseract = "*"
 pdf2image = "*"
-pgvector = "*"
-psycopg = ">=3.0"
-psycopg-binary = "*"
-psycopg-pool = "*"
-rank-bm25 = "*"
-unstructured = "*"
 PyMuPDF = "*"
+unstructured = "*"
+
+# Data / UI
 pandas = "*"
-ragas = "*"
+plotly = "*"
+dash = "*"
+dash-bootstrap-components = "*"
+dash-trich-components = "*"
+jupyter = "*"
+python-dotenv = "*"
+
+# Others
+spacy = "*"
+mcp = "*"
+rank-bm25 = "*"
+
+# PostgreSQL (CORRECT, v3)
+psycopg = { version = "^3.1", extras = ["binary"] }
+psycopg-pool = "^3.1"
+pgvector = "*"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "*"
